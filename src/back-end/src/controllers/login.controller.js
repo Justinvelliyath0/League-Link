@@ -1,6 +1,7 @@
 const userService = require("../services/users.service");
 const { compareSync } = require("bcrypt");
 const authUtils = require('../utils/auth.utils');
+const {logging} = require('../utils/logging');
 
 // Function to handle login request
 const login = async (req, res, next) => {
@@ -23,6 +24,7 @@ const login = async (req, res, next) => {
         // Generate and send JWT token
         res.send(authUtils.generateToken(userResponse));
     } catch (error) {
+        logging('error', error.message, module.id)
         res.status(400).send({ message: "Something went wrong", trace : process.env.APP_ENV != 'prod' ? error.stack : "Cannot trace the error, Please find the log"});
     }
 };
