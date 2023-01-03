@@ -10,7 +10,7 @@ const logFormat = printf(({ level, message, label, timestamp }) => {
 
 // Custom format for the API logger output
 const apiLogFormat = printf(({ level, message, label, timestamp }) => {
-  return `${level.toUpperCase()} :: ${timestamp} ${message} file : [${label}]`;
+  return `${level.toUpperCase()} :: ${timestamp} ${message}`;
 });
 
 // Create a logger with a custom format and file transport
