@@ -2,6 +2,7 @@
 /node_modules
 
 #environment
-.env
-access.log
-package-lock.json
+/.env
+
+#logs
+/logs

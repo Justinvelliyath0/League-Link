@@ -6,8 +6,8 @@ const playersRouter = require('./routes/players.routes');
 const app = require('./server');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const { route } = require('./server');
-const apiLog = require('./middlewares/api.logger')
+const logger = require('./utils/logger.utils')
+const uuid = require('uuid');
 
 // Load environment variables from .env file
 dotenv.config();
@@ -21,8 +21,6 @@ app.use(express.json());
 app.use(cors({
   origin: ORIGIN,
 }));
-app.use(apiLog);
-
 
 // Use the login router for all login-related routes
 app.use('/login', loginRouter);
